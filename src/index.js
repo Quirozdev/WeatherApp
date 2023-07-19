@@ -5,7 +5,6 @@ console.log(data);
 
 const form = document.querySelector('form');
 const locationInput = document.getElementById('location');
-const infoDisplayer = document.querySelector('.info-displayer');
 
 form.addEventListener('submit', async (e) => {
   e.preventDefault();
