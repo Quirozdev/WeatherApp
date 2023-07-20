@@ -21,8 +21,14 @@ body {
   height: 100dvh;
 }
 
-header {
-  height: 10%;
+main {
+  min-height: 90%;
+  padding-top: 16px;
+}
+
+footer {
+  display: block;
+  min-height: 10%;
 }
 
 .content {
@@ -30,7 +36,6 @@ header {
   flex-direction: column;
   gap: 8px;
   padding: 32px;
-  height: 90%;
   transition: opacity 1s ease-in-out;
 }
 
@@ -146,6 +151,7 @@ form {
 
 .forecast-title {
   text-align: center;
+  font-size: 1.5rem;
 }
 
 .forecasts-container {

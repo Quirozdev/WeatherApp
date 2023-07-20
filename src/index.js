@@ -61,14 +61,21 @@ function displayCurrentWeatherData({ current, location, error }) {
 function displayForecastData(forecastData) {
   forecastsContainer.innerHTML = '';
   forecastData.forEach((forecastDay) => {
-    const { info } = forecastDay;
+    const { date, info } = forecastDay;
     const forecastTitleElem = document.createElement('h4');
-    forecastTitleElem.textContent = info.date;
+    const parsedDate = parseDate(date);
+    const dayOfTheWeek = new Intl.DateTimeFormat('en-US', {
+      weekday: 'long',
+    }).format(parsedDate);
+    forecastTitleElem.textContent = dayOfTheWeek;
 
     const conditionIconElem = document.createElement('img');
     const { src, alt } = getWeatherIconSrcAndAlt(info.condition);
     conditionIconElem.src = src;
     conditionIconElem.alt = alt;
+
+    const conditionTextElem = document.createElement('h3');
+    conditionTextElem.textContent = info.condition.text;
 
     const temperatureParaElem = document.createElement('p');
     temperatureParaElem.textContent = `${info.avgtemp_c}° C`;
@@ -78,6 +85,7 @@ function displayForecastData(forecastData) {
 
     forecastContainer.appendChild(forecastTitleElem);
     forecastContainer.appendChild(conditionIconElem);
+    forecastContainer.appendChild(conditionTextElem);
     forecastContainer.appendChild(temperatureParaElem);
 
     forecastsContainer.appendChild(forecastContainer);
@@ -106,6 +114,15 @@ function formatDate(date) {
   return `${day < 10 ? '0' + day : day}/${
     month < 10 ? '0' + month : month
   }/${year} ${hours}:${minutes}`;
+}
+
+function parseDate(dateStr) {
+  const dateArr = dateStr.split('-');
+  const year = dateArr[0];
+  // 0 indexed months
+  const month = dateArr[1] - 1;
+  const day = dateArr[2];
+  return new Date(year, month, day);
 }
 
 function processForeCastData(forecastArr) {
