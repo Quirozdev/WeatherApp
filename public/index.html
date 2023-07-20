@@ -3,15 +3,25 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
+    <title>Weather App</title>
   </head>
   <body>
-    <main class="content">
+    <header>
+      <a
+        href="https://www.weatherapi.com/"
+        target="_blank"
+        title="Free Weather API"
+        ><img
+          src="//cdn.weatherapi.com/v4/images/weatherapi_logo.png"
+          alt="Weather data by WeatherAPI.com"
+      /></a>
+    </header>
+    <main>
       <form>
         <input
           type="text"
-          id="location"
-          name="location"
+          id="location-input"
+          name="location-input"
           placeholder="Search for cities"
           required
         />
@@ -23,21 +33,28 @@
           </svg>
         </button>
       </form>
-      <section class="principal-weather-info">
-        <div class="location-info-and-humidity-container">
-          <h2 class="location-info">Madrid</h2>
-          <p>Humidity: <span class="humidity">10%</span></p>
-        </div>
-        <h2 class="temperature">31°</h2>
-        <img src="./resources/icons/day/113.png" alt="" id="weather-icon" />
-        <h3 class="temperature-condition"></h3>
-      </section>
-      <section class="today-forecast">
-        <h6>TODAY'S FORECAST</h6>
-      </section>
-      <section class="air-conditions">
-        <h6>AIR CONDITIONS</h6>
-      </section>
+      <div class="content hidden">
+        <section class="principal-weather-info">
+          <div class="location-info">
+            <h2 class="location"></h2>
+            <p class="date"></p>
+            <p class="hour"></p>
+          </div>
+          <div class="temperature-and-humidity-container">
+            <h2 class="temperature"></h2>
+            <p class="humidity"></p>
+          </div>
+          <img src="" alt="" id="weather-icon" />
+          <h3 class="temperature-condition"></h3>
+        </section>
+        <section class="forecast-section">
+          <h3 class="forecast-title">Forecast</h3>
+          <div class="forecasts-container"></div>
+        </section>
+        <section class="air-conditions">
+          <h6>AIR CONDITIONS</h6>
+        </section>
+      </div>
     </main>
   </body>
 </html>
